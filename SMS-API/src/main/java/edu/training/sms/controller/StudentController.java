@@ -18,31 +18,31 @@ import edu.training.sms.service.StudentService;
 public class StudentController {
 	@Autowired
 	StudentService studentService;
-
+	
 	@PostMapping("/add")
-	private Long saveBook(@RequestBody Student student) {
-		studentService.saveOrUpdate(student);
+	private Long add(@RequestBody Student student) {
+		studentService.addOrUpdate(student);
 		return student.getId();
 	}
-
-	@PutMapping("/update")
-	private Student update(@RequestBody Student student) {
-		studentService.saveOrUpdate(student);
-		return student;
-	}
-
+	
 	@GetMapping("/students")
-	private List<Student> getAllBooks() {
+	private List<Student> getAllStudents(){
 		return studentService.getAllStudents();
 	}
-
+	
 	@GetMapping("/student/{id}")
-	private Student getBooks(@PathVariable("id") Long id) {
+	private Student getStudentById(@PathVariable("id") Long id){
 		return studentService.getStudentById(id);
 	}
-
-	@DeleteMapping("/student/{id}")
-	private void deleteBook(@PathVariable("id") Long id) {
-		studentService.delete(id);
+	
+	@PutMapping("/update")
+	private Long update(@RequestBody Student student) {
+		studentService.addOrUpdate(student);
+		return student.getId();
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	private Boolean delete(@PathVariable("id") Long id) {
+		return studentService.delete(id);
 	}
 }

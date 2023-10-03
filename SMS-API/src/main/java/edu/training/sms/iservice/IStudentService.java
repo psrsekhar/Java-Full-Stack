@@ -5,8 +5,11 @@ import java.util.List;
 import edu.training.sms.model.Student;
 
 public interface IStudentService {
+	Boolean addOrUpdate(Student student);
+
 	List<Student> getAllStudents();
+
 	Student getStudentById(Long id);
-	void saveOrUpdate(Student student);
-	void delete(Long id);
+
+	Boolean delete(Long id);
 }

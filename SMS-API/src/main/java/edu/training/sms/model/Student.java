@@ -2,6 +2,8 @@ package edu.training.sms.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,20 +11,16 @@ import jakarta.persistence.Table;
 @Table
 public class Student {
 	@Id
-	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	@Column
 	private String name;
-
 	@Column
 	private String email;
-
 	@Column
-	private String phno;
-
+	private Integer pinCode;
 	@Column
-	private Boolean isActive;
+	private String address;
 
 	public Long getId() {
 		return id;
@@ -48,19 +46,19 @@ public class Student {
 		this.email = email;
 	}
 
-	public String getPhno() {
-		return phno;
+	public Integer getPinCode() {
+		return pinCode;
 	}
 
-	public void setPhno(String phno) {
-		this.phno = phno;
+	public void setPinCode(Integer pinCode) {
+		this.pinCode = pinCode;
 	}
 
-	public Boolean getIsActive() {
-		return isActive;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }
